@@ -88,36 +88,33 @@
         let city = cityInput.value
         let zip = zipInput.value
 
-        // TODO Validate that all six input and select elements have been completed
 
-        // TODO Validate the zipcode is in the range 55001 and 56763 (which checks that the zip code is in Minnesota)
-
-        // If a form element has not been completed, add an error message to the errors array (use push)
+        // Create an empty array for accumulating errors
 
         let errors = [];
 
-        if (name.length < 1) {
+        // If a field is blank, or zip code is not in MN, add an error to the array
+
+        if (!name) {
             errors.push('You must add a name')
         }
-        if (houseNumber.length < 1) {
+        if (!houseNumber) {
             errors.push('You must add a house number')
         }
-        if (streetName.length < 1) {
+        if (!streetName) {
             errors.push('You must add a street name')
         }
-        if (city.length < 1) {
+        if (!city) {
             errors.push('You must add a city')
         }
-        if (treeType.length < 1) {
+        if (!treeType) {
             errors.push('You must select a tree type')
         }
         if (zip < 55001 || zip > 56763) {
             errors.push('Zip must be between 55001 and 56763')
         }
 
-        // TODO - If there are any errors after checking all of the elements,
-        // display an alert with all of the error messages (use join)
-        // and then return from this function to prevent further processing
+        // Display the error message if anything was added, otherwise print the order summary
 
         if (errors.length) {
             alert(errors.join('\n'))
@@ -125,12 +122,9 @@
         } else {
             orderSummaryParagraph.innerHTML = `${name}<br>
             ${houseNumber} ${streetName}<br>
-            ${city}, MN ${zip}<br><br>
-
+            ${city}, MN ${zip}<br>
             ${treeType} tree`
         }
-
-        // TODO - If there are no errors, use a template string to display an order summary in the order summary paragraph
 
     })
 
